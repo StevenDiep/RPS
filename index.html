@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./javascript.js" defer></script>
 </head>
 <body>
-    <script src="./javascript.js"></script>
+    <div>
+        <button id="main">Play round</button>
+    </div>
+
+    <div>
+        <ul id="choices">
+            <li><button id="rock">Rock</button></li>
+            <li><button id="paper">Paper</button></li>
+            <li><button id="scissors">Scissors</button></li>
+        </ul>
+    </div>
+
+    <div>
+        <p id="yourChoice"></p>
+        <p id="computerChoice"></p>
+    </div>
+    
+    <div class="scoreboard">
+        <h2>Scoreboard</h2>
+        <p>Your score:</p>
+        <p id="yourScore">0</p>
+        <p>Computer score:</p>
+        <p id="computerScore">0</p>
+    </div>
 </body>
 </html>

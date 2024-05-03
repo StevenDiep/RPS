@@ -1,5 +1,5 @@
 function getComputerChoice(){
-    num = Math.random()
+    let num = Math.random()
     if (num <= .33){
         return "rock";
     }
@@ -11,44 +11,49 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(msg = "Please enter your choice"){
-    let choice = prompt(msg, "")
-    choice = choice.toLowerCase(); //makes the input case-insensitive
-    if (choice == "rock"){
-        return "rock";
-    }
+function getHumanChoice(human, computer){
+    let choices = document.querySelector('#choices');
+    choices.addEventListener('click', (event) => {
+        let target = event.target;
 
-    else if (choice == "scissors"){
-        return "scissors";
+        switch(target.id) {
+            case 'rock':
+                console.log('Rock was clicked');
+                human.textContent = "rock";
+                computer.textContent = getComputerChoice();
+                break;
+            case 'paper':
+                console.log('Paper was clicked');
+                human.textContent = "paper";
+                computer.textContent = getComputerChoice();
+                break;
+            case 'scissors':
+                console.log("Scissors was clicked");
+                human.textContent = "scissors";
+                computer.textContent = getComputerChoice();
+                break;
     }
-
-    else if (choice == "paper"){
-        return "paper";
-    }
-
-    else{
-        getHumanChoice("Incorrect input, please enter 'rock', 'paper', or 'scissors'");
-    }
+});
 }
 
-function playRound(humanChoice, computerChoice){
+function playRound(humanChoice, computerChoice, humanScore, computerScore){
     if (humanChoice == computerChoice){
         console.log("The round is a tie");
-        return "Tie";
+    
     }
 
     if ( (humanChoice == "scissors" && computerChoice == "paper") || 
     (humanChoice == "rock" && computerChoice == "scissors") ||
     (humanChoice == "paper" && computerChoice == "rock") ){
         console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-        return "You win!";
+        humanScore.textContent++;
     }
 
     if ( (computerChoice == "scissors" && humanChoice=="paper") ||
     (computerChoice == "rock" && humanChoice == "scissors") ||
     (computerChoice == "paper" && humanChoice == "rock") ){
         console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-        return "You lose!";
+        computerScore.textContent++;
     }
 }
 
@@ -86,6 +91,15 @@ function playGame(){
     }
 }
 
-playGame();
+//Main Script:
+let humanScore = document.getElementById("yourScore")
+let computerScore = document.getElementById("computerScore")
+let computerChoice = document.getElementById("computerChoice")
+let yourChoice = document.getElementById("yourChoice")
+
+getHumanChoice(yourChoice, computerChoice)
+
+
+
 
 
