@@ -11,7 +11,7 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(human, computer){
+function getHumanChoice(human, computer, humanScore, computerScore){
     let choices = document.querySelector('#choices');
     choices.addEventListener('click', (event) => {
         let target = event.target;
@@ -21,17 +21,32 @@ function getHumanChoice(human, computer){
                 console.log('Rock was clicked');
                 human.textContent = "rock";
                 computer.textContent = getComputerChoice();
+                playRound(human.textContent, computer.textContent, humanScore, computerScore)
                 break;
             case 'paper':
                 console.log('Paper was clicked');
                 human.textContent = "paper";
                 computer.textContent = getComputerChoice();
+                playRound(human.textContent, computer.textContent, humanScore, computerScore)
                 break;
             case 'scissors':
                 console.log("Scissors was clicked");
                 human.textContent = "scissors";
                 computer.textContent = getComputerChoice();
+                playRound(human.textContent, computer.textContent, humanScore, computerScore)
                 break;
+    }
+
+    if (humanScore.textContent == 5){
+        alert("Congrats, you win the game")
+        humanScore.textContent = 0
+        computerScore.textContent = 0
+    }
+
+    if (computerScore.textContent == 5){
+        alert("The computer has won")
+        humanScore.textContent = 0
+        computerScore.textContent = 0
     }
 });
 }
@@ -97,8 +112,11 @@ let computerScore = document.getElementById("computerScore")
 let computerChoice = document.getElementById("computerChoice")
 let yourChoice = document.getElementById("yourChoice")
 
-getHumanChoice(yourChoice, computerChoice)
+getHumanChoice(yourChoice, computerChoice, humanScore, computerScore)
 
+if (humanScore.textContent > 5 && computerScore.textContent > 5){
+    alert("Game over")
+}
 
 
 
