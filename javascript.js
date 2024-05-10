@@ -41,12 +41,16 @@ function getHumanChoice(human, computer, humanScore, computerScore){
         alert("Congrats, you win the game")
         humanScore.textContent = 0
         computerScore.textContent = 0
+        human.textContent = ''
+        computer.textContent = ''
     }
 
     if (computerScore.textContent == 5){
         alert("The computer has won")
         humanScore.textContent = 0
         computerScore.textContent = 0
+        human.textContent = ''
+        computer.textContent = ''
     }
 });
 }
